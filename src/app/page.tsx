@@ -1,95 +1,67 @@
+"use client"
 import Image from "next/image";
 import styles from "./page.module.css";
-
+import InputText from "./components/forms/InputText";
+import InputSubmit from "./components/forms/InputSubmit";
+import { handler } from "./axios/handler";
+import { useEffect, useState } from "react";
 export default function Home() {
+
+  const [name, setName] = useState<string>();
+  const [cpf, setCpf] = useState<string>();
+  const [email, setEmail] = useState<string>();
+
+
+  const handleNameChange = async (e : React.ChangeEvent<HTMLInputElement>) =>
+  {
+    const newName = e.target.value
+    setName(newName)
+  }
+
+  const handleCpfChange = async (e : React.ChangeEvent<HTMLInputElement>) =>
+  {
+    const newCpf = e.target.value
+    setCpf(newCpf)
+  }
+
+  const handleEmailChange = async (e : React.ChangeEvent<HTMLInputElement>) =>
+  {
+    const newEmail = e.target.value
+    setEmail(newEmail)
+  }
+
+  const handleSubmit = async (e : React.FormEvent<HTMLFormElement>) =>
+  {
+    e.preventDefault()
+    try{
+      const response = await handler.post("/funcionarioCreation", { name, cpf, email });
+      const data = await response.data
+      console.log(data)
+    }catch(error)
+    {
+      console.log(error)
+    }
+  }
+
+  useEffect(()=>
+  {
+    console.log(name)
+  },[name])
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+   <div className={styles.container}>
+     <div className={styles.formContainer}>
+        <div className={styles.title}>
+            <span>Cadastro de Funcionários para C3Cine</span>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <InputText changeEvent={handleNameChange} placeholder="Nome do Funcionário"></InputText>
+          <InputText changeEvent={handleCpfChange} placeholder="CF do Funcionário"></InputText>
+          <InputText changeEvent={handleEmailChange} placeholder="Email do Funcionário"></InputText>
+          <InputSubmit text="Cadastrar"></InputSubmit>
+        </form>
+     </div>
+      
+   </div>
   );
 }
