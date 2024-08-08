@@ -1,5 +1,5 @@
 "use client";
-import styles from "./inputText.module.css";
+import styles from "./InputText.module.css";
 
 interface InputTextTypes {
   placeholder: string;
