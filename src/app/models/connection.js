@@ -1,12 +1,11 @@
 const Sequelize = require("sequelize");
-import { PostgresDialect } from '@sequelize/postgres';
 
 const sequelize = new Sequelize({
     host: process.env.POSTGRES_HOST,
     username: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DATABASE,
-    dialect: PostgresDialect,
+    dialect: 'postgres',
     benchmark: true
 });
 
