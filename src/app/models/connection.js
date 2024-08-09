@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+import pg from "pg";
 
 const sequelize = new Sequelize({
     host: process.env.POSTGRES_HOST,
