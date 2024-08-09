@@ -27,6 +27,7 @@
     "prisma": "^5.18.0",
     "sequelize": "^6.37.3",
     "typescript": "^5",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-node-externals": "^3.0.0",
+    "postinstall": "prisma generate"
   }
 }

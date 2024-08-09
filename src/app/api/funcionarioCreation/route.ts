@@ -7,11 +7,8 @@ export async function POST(request : Request)  : Promise<void | Response>  {
         const {name, cpf, email} = await request.json();
 
         const createdFuncionario = await prisma.funcionarios.create({
-            data:{ 
-                name,
-                cpf,
-                email},
-            })
+            data:{ name, cpf, email}, 
+        })
         return NextResponse.json(
             {
                 response: `Funcionario created: ${createdFuncionario}`
