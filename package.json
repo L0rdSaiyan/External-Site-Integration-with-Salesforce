@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",
@@ -27,7 +28,6 @@
     "prisma": "^5.18.0",
     "sequelize": "^6.37.3",
     "typescript": "^5",
-    "webpack-node-externals": "^3.0.0",
-    "postinstall": "prisma generate"
+    "webpack-node-externals": "^3.0.0"
   }
 }
