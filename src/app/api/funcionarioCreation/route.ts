@@ -4,7 +4,7 @@ import { PrismaClient, Prisma } from '@prisma/client';
 const prisma = new PrismaClient()
 export async function POST(request : Request)  : Promise<void | Response>  {
     try{
-        const {name, cpf, email} = await request.json();
+        const {name, cpf, email} = await request.json()
 
         const createdFuncionario = await prisma.funcionarios.create({
             data:{ name, cpf, email}, 
