@@ -1,28 +1,23 @@
-import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { ResponseType } from "axios";
+import { NextResponse} from "next/server";
+import { PrismaClient, Prisma } from '@prisma/client';
+const prisma = new PrismaClient()
+export async function POST(request : Request)  : Promise<void | Response>  {
+    try{
+        const {name, cpf, email} = await request.json();
 
-const prisma = new PrismaClient();
-
-export async function POST(request: Request): Promise<Response> {
-  try {
-    // Parsing the request body
-    const { cpf } = await request.json();
-
-    // Query the database
-    const funcionarioReturned = await prisma.funcionarios.findFirst({
-      where: {
-        cpf: cpf,
-      },
-    });
-
-    // Return the response as JSON
-    return NextResponse.json({
-      response: `Funcionario returned: ${funcionarioReturned}`
-    });
-  } catch (error) {
-    // Handle any errors
-    return NextResponse.json({
-      response: `Error: ${error}`,
-    });
-  }
+        const createdFuncionario = await prisma.funcionarios.create({
+            data:{ name, cpf, email}, 
+        })
+        return NextResponse.json(
+            {
+                response: `Funcionario created: ${createdFuncionario}`
+            }
+        )
+    }catch(error)
+    {
+        return NextResponse.json({
+            response: error
+        })
+    }
 }

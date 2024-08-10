@@ -5,7 +5,8 @@ const prisma = new PrismaClient();
 
 export async function GET(request: Request): Promise<void | Response> {
   try {
-    const { cpf } = await request.json();
+    const json = await request.json();
+    const { cpf } = json;
 
     const funcionarioReturned = await prisma.funcionarios.findFirst({
       where: {
