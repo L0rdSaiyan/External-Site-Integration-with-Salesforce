@@ -3,10 +3,9 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function GET(request: Request): Promise<void | Response> {
+export async function POST(request: Request): Promise<void | Response> {
   try {
-    const json = await request.json();
-    const { cpf } = json;
+    const { cpf } = await request.json();
 
     const funcionarioReturned = await prisma.funcionarios.findFirst({
       where: {
