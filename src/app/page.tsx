@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
 
   const [name, setName] = useState<string>();
-  const [cpf, setCpf] = useState<string>();
+  const [cpf, setCpf] = useState<string>("654333");
   const [email, setEmail] = useState<string>();
 
 
@@ -43,10 +43,27 @@ export default function Home() {
     }
   }
 
+  const getFuncionario = async () =>
+  {
+    try{
+      const response = await handler.post("/getFuncionarios", {cpf})
+      const data = await response.data
+      console.log(data)
+    }catch(error)
+    {
+      console.log(error)
+    }
+  }
+
   useEffect(()=>
   {
     console.log(name)
   },[name])
+
+  useEffect(()=>
+  {
+    getFuncionario();
+  },[])
 
   return (
    <div className={styles.container}>
