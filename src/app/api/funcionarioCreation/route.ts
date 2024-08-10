@@ -17,7 +17,7 @@ export async function POST(request: Request): Promise<Response> {
 
     // Return the response as JSON
     return NextResponse.json({
-      response: funcionarioReturned,
+      response: `Funcionario returned: ${funcionarioReturned}`
     });
   } catch (error) {
     // Handle any errors
