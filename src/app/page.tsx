@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
 
   const [name, setName] = useState<string>();
-  const [cpf, setCpf] = useState<string>("654333");
+  const [cpf, setCpf] = useState<string>();
   const [email, setEmail] = useState<string>();
 
 
@@ -59,11 +59,6 @@ export default function Home() {
   {
     console.log(name)
   },[name])
-
-  useEffect(()=>
-  {
-    getFuncionario();
-  },[])
 
   return (
    <div className={styles.container}>
