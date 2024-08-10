@@ -1,7 +1,7 @@
 import axios from 'axios'
 export const handler = axios.create(
     {
-        baseURL: "http://localhost:3000/api",
+        baseURL: "https://external-site-integration-with-salesforce-tea-git-bc6c3b-cuecas.vercel.app/api",
         headers: {
             "Content-Type" : "application/json"
         }
