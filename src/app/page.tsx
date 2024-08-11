@@ -47,7 +47,7 @@ export default function Home() {
   const getFuncionario = async () =>
   {
     try{
-      const response = await handler.post("/getFuncionarios", {cpfTeste})
+      const response = await handler.get("/getFuncionarios")
       const data = await response.data
       console.log(data)
     }catch(error)
