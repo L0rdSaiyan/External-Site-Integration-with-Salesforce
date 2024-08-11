@@ -10,6 +10,7 @@ export default function Home() {
   const [name, setName] = useState<string>();
   const [cpf, setCpf] = useState<string>();
   const [email, setEmail] = useState<string>();
+  const [cpfTeste, setCpfTeste] = useState<string>("654333");
 
 
   const handleNameChange = async (e : React.ChangeEvent<HTMLInputElement>) =>
@@ -46,7 +47,7 @@ export default function Home() {
   const getFuncionario = async () =>
   {
     try{
-      const response = await handler.post("/getFuncionarios", {cpf})
+      const response = await handler.post("/getFuncionarios", {cpfTeste})
       const data = await response.data
       console.log(data)
     }catch(error)
@@ -72,7 +73,9 @@ export default function Home() {
           <InputText changeEvent={handleEmailChange} placeholder="Email do Funcionário"></InputText>
           <InputSubmit text="Cadastrar"></InputSubmit>
         </form>
+        <button onClick={getFuncionario}>Procurar</button>
      </div>
+
       
    </div>
   );
