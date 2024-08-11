@@ -12,7 +12,7 @@ export async function GET(): Promise<void | Response> {
     });
 
     return NextResponse.json({
-      response: funcionarioReturned,
+      funcionarioReturned,
     });
   } catch (error) {
     return NextResponse.json({
