@@ -45,6 +45,7 @@ export default function Home() {
   }
 
   const getFuncionario = async () =>
+<<<<<<< HEAD
   {
     try{
       const response = await handler.get("/getFuncionarios")
@@ -55,6 +56,18 @@ export default function Home() {
       console.log(error)
     }
   }
+=======
+    {
+      try{
+        const response = await handler.get("/getFuncionario")
+        const data = await response.data
+        console.log(data)
+      }catch(error)
+      {
+        console.log(error)
+      }
+    }
+>>>>>>> Renan
 
   useEffect(()=>
   {
