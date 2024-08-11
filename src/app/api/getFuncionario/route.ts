@@ -12,7 +12,11 @@ export async function GET(): Promise<void | Response> {
     });
 
     return NextResponse.json({
-      funcionarioReturned,
+      await : prisma.funcionarios.findFirst({
+        where: {
+          cpf: "654333",
+        },
+      }),
     });
   } catch (error) {
     return NextResponse.json({
