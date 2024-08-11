@@ -7,12 +7,15 @@ export async function GET(request: Request): Promise<void | Response> {
   try {
     // Obtém o CPF da query string
     const url = new URL(request.url);
-    const cpf = url.searchParams.get('cpf');
+    const cpf = url.searchParams.get("cpf");
 
     if (!cpf) {
-      return NextResponse.json({
-        error: "CPF parameter is required",
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          error: "CPF parameter is required",
+        },
+        { status: 400 }
+      );
     }
 
     // Pesquisa o funcionário com o CPF fornecido
@@ -25,8 +28,11 @@ export async function GET(request: Request): Promise<void | Response> {
     // Retorna os dados encontrados
     return NextResponse.json(funcionarioReturned);
   } catch (error) {
-    return NextResponse.json({
-      error: `Error: ${error}`,
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: `Error: ${error}`,
+      },
+      { status: 500 }
+    );
   }
 }
