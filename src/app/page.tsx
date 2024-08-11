@@ -56,7 +56,7 @@ export default function Home() {
         </div>
         <form className={styles.form} onSubmit={handleSubmit}>
           <InputText changeEvent={handleNameChange} placeholder="Nome do Funcionário"></InputText>
-          <InputText changeEvent={handleCpfChange} placeholder="CF do Funcionário"></InputText>
+          <InputText changeEvent={handleCpfChange} placeholder="CPF do Funcionário"></InputText>
           <InputText changeEvent={handleEmailChange} placeholder="Email do Funcionário"></InputText>
           <InputSubmit text="Cadastrar"></InputSubmit>
         </form>
