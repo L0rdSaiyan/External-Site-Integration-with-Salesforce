@@ -11,7 +11,7 @@ export async function POST(request : Request)  : Promise<void | Response>  {
         })
         return NextResponse.json(
             {
-                response: `Funcionario created: ${createdFuncionario}`
+               createdFuncionario
             }
         )
     }catch(error)

@@ -1,0 +1,19 @@
+<template>
+  <lightning-modal-header
+    label="Criação de Funcionário"
+  ></lightning-modal-header>
+  <lightning-modal-body>
+    <lightning-record-edit-form
+    object-api-name={objectApiName}
+>
+<lightning-input-field field-name={nameField}> </lightning-input-field>
+<lightning-input-field field-name={cpfField}> </lightning-input-field>
+<lightning-input-field field-name={cargoField}> </lightning-input-field>
+<lightning-input-field field-name={emailField}> </lightning-input-field>
+    <div class="slds-var-m-top_medium">
+        <lightning-button variant="brand" type="submit" label="Criar">
+        </lightning-button>
+    </div>
+</lightning-record-edit-form>
+  </lightning-modal-body>
+</template>
