@@ -1,0 +1,45 @@
+<template>
+  <div class={searchEmployee}>
+    <lightning-modal-header label="Buscar Funcionário">
+    </lightning-modal-header>
+    <lightning-modal-body>
+      <lightning-input onchange={handleInputChange} type="text" label="CPF do Funcionário:">
+      </lightning-input>
+      <lightning-layout>
+        <lightning-layout-item>
+          <lightning-button variant="brand" label="Buscar" title="Buscar" onclick={handleKeyChange}
+          class="slds-m-left_x-small slds-align_absolute-center">
+          </lightning-button>
+        </lightning-layout-item>
+        <template lwc:if={visibleCreateButton}>
+          <lightning-layout-item>
+            <lightning-button variant="success" label="Criar" title="Criar" onclick={handleClick}
+            class="slds-m-left_x-small slds-align_absolute-center">
+            </lightning-button>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </lightning-modal-body>
+  </div>
+  <template lwc:if={modalForm}>
+    <lightning-modal-header label="Criação de Funcionário">
+    </lightning-modal-header>
+    <lightning-modal-body>
+      
+        <lightning-record-edit-form object-api-name="Employees__c" onsuccess={handleSuccess}>
+            <lightning-input-field value={name} onchange={handleInputChangeName} field-name="Name">
+            </lightning-input-field>
+            <lightning-input-field value={cpf} field-name="CPF__c">
+            </lightning-input-field>
+            <lightning-input-field field-name="Cargo__c">
+            </lightning-input-field>
+            <lightning-input-field value={email} onchange={handleInputChangeEmail} field-name="Email__c">
+        </lightning-input-field>
+        <div class="slds-var-m-top_medium">
+          <lightning-button variant="brand" type="submit" label="Criar" onclick={handleClick}>
+          </lightning-button>
+        </div>
+      </lightning-record-edit-form>
+    </lightning-modal-body>
+  </template>
+</template>
