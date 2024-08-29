@@ -50,6 +50,7 @@ public with sharing class FuncionarioAPIController {
   }
 
   @AuraEnabled
+  @future(callout=true)
   public static void postFuncionario(String cpf, String nome, String email) {
     Http h = new Http();
 
